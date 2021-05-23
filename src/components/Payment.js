@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './Payment.css';
-import { useStateValue } from './StateProvider';
+import { useStateValue } from '../StateProvider';
 import CheckoutProduct from './CheckoutProduct.js';
 import { Link, useHistory } from "react-router-dom";
 import { useElements, useStripe, CardElement } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
-import { getBasketTotal } from './reducer';
-import axios from './axios';
+import { getBasketTotal } from '../reducer';
+import axios from '../axios';
 
 function Payment() {
 
@@ -52,6 +52,8 @@ function Payment() {
             setError(null);
             setProcessing(false);
 
+            console.log(payload);
+
             dispatch({
                 type: 'EMPTY_BASKET'
             })
@@ -60,6 +62,8 @@ function Payment() {
         })
 
     }
+
+    
 
     const handleChange = event => {
         // Listen for changes in the CardElement
